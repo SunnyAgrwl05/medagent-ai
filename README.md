@@ -41,11 +41,14 @@ Five AI helpers. One simple app for your health questions.
 ## 🖼️ Preview
 
 <div align="center">
-<img src="docs/screenshot-landing.png" alt="MedAgent AI landing page" width="100%"/>
-<br/>
-<sub>Chatting with the Symptom Agent</sub>
-</div>
 
+<img src="./docs/landing.png" alt="MedAgent AI Landing Page" width="100%" />
+
+<br/>
+
+<sub><b>Modern MedAgent AI Landing Page</b></sub>
+
+</div>
 <br/>
 
 ## 🌟 What is this?
