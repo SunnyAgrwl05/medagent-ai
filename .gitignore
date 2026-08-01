@@ -8,3 +8,4 @@ build
 .vercel
 *.log
 .DS_Store
+.env.local
