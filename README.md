@@ -58,28 +58,28 @@ It's powered by Gemini AI, with a backup AI ready if Gemini is busy, and a real 
 
 ## 💬 Example conversations
 
-Just talk normally — no special commands.
+Just talk like you talk to a friend. No hard words needed.
 
 **🗣️ Symptom Checker**
-> "I've had a headache and mild fever since this morning."
-> "My stomach's been hurting for two days."
+> "My head hurts and I have a little fever since morning."
+> "My stomach hurts for two days."
 
 **📄 Lab Report Explainer**
-> Upload a report and ask: "Can you explain this?"
-> "Is anything here worth worrying about?"
+> Upload your report and ask: "What does this mean?"
+> "Is anything here bad?"
 
 **💊 Medicine Identifier**
-> Snap a photo and ask: "What is this for?"
+> Take a photo and ask: "What is this medicine for?"
 > "Can I take this with paracetamol?"
 
 **🎙️ Voice Chat**
-> Just press the mic and talk: "I've been coughing a lot lately."
+> Press the mic and say: "I have been coughing a lot."
 
 **📊 Health Summary**
-> "Summarize my health this month."
-> "Am I improving?"
+> "Tell me about my health this month."
+> "Am I getting better?"
 
-If something sounds serious, it says so clearly and tells you to get real help right away.
+If something sounds serious, it tells you clearly and says: go get help now.
 
 <br/>
 
