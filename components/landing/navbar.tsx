@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { motion } from "framer-motion";
-import { UserRound, Menu, X } from "lucide-react";
+import { Stethoscope, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { cn } from "@/lib/utils";
@@ -19,6 +19,7 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -44,23 +45,76 @@ export function Navbar() {
       >
         <Link href="/" className="flex items-center gap-2.5">
           <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-teal-400 to-indigo-500 shadow-lg shadow-teal-500/30">
-            <UserRound className="h-5 w-5 text-white" strokeWidth={2.5} />
+            <Stethoscope className="h-5 w-5 text-white" strokeWidth={2.5} />
           </div>
           <span className="font-display text-lg font-bold tracking-tight">
             MedAgent<span className="text-gradient"> AI</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav className="hidden items-center md:flex">
+          <div className="relative flex items-center">
+            {/* static background line connecting all dots */}
+            <div className="absolute left-[59px] right-[59px] top-[7px] h-px bg-border" />
+
+            {/* glowing trail that fills up to the traveling indicator */}
+            <motion.div
+              className="absolute top-[7px] h-px origin-left bg-gradient-to-r from-teal-400 to-indigo-400"
+              style={{ left: 59 }}
+              animate={{
+                width: hoveredIndex === null ? 0 : hoveredIndex * 118,
+                opacity: hoveredIndex === null ? 0 : 1,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            />
+
+            {/* traveling glowing indicator dot */}
+            <motion.div
+              className="pointer-events-none absolute top-[7px] z-20 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-400 shadow-[0_0_12px_3px_rgba(45,212,191,0.7)]"
+              animate={{
+                left: hoveredIndex === null ? 59 : 59 + hoveredIndex * 118,
+                opacity: hoveredIndex === null ? 0 : 1,
+                scale: hoveredIndex === null ? 0.5 : 1,
+              }}
+              transition={{ type: "spring", stiffness: 350, damping: 26 }}
+            />
+
+            {links.map((link, i) => {
+              const isHovered = hoveredIndex === i;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className="group relative flex w-[118px] flex-col items-center gap-2 py-2 [perspective:600px]"
+                >
+                  <span
+                    className={cn(
+                      "relative z-10 h-2 w-2 rounded-full border transition-all duration-300",
+                      isHovered
+                        ? "scale-125 border-teal-400 bg-teal-400"
+                        : "border-muted-foreground/40 bg-background"
+                    )}
+                  />
+                  <motion.span
+                    animate={{
+                      rotateX: isHovered ? -8 : 0,
+                      y: isHovered ? -2 : 0,
+                      scale: isHovered ? 1.06 : 1,
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                    className={cn(
+                      "text-sm font-medium transition-colors duration-300",
+                      isHovered ? "text-foreground" : "text-muted-foreground"
+                    )}
+                  >
+                    {link.label}
+                  </motion.span>
+                </Link>
+              );
+            })}
+          </div>
         </nav>
         <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle />

@@ -59,11 +59,10 @@ function TypingDemo() {
             className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                msg.role === "user"
-                  ? "rounded-br-md bg-gradient-to-br from-teal-500 to-indigo-500 text-white"
-                  : "rounded-bl-md border border-white/10 bg-white/5 text-foreground"
-              }`}
+              className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${msg.role === "user"
+                ? "rounded-br-md bg-gradient-to-br from-teal-500 to-indigo-500 text-white"
+                : "rounded-bl-md border border-white/10 bg-white/5 text-foreground"
+                }`}
             >
               {msg.agent && (
                 <div className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-teal-300">
@@ -97,14 +96,13 @@ export function Hero() {
             <br />
             <span className="text-gradient">2 in the morning?</span>
             <br />
-            We've got you covered.
+            We can help.
           </h1>
 
           <p className="mt-6 max-w-lg text-lg text-muted-foreground">
-            Tell it what's bothering you, upload a lab report, snap a photo
-            of a medicine strip, or just talk it out — MedAgent AI walks
-            through it with you and keeps a running picture of your health
-            over time.
+            Talk to it like a friend. Say how you feel, show it a photo,
+            or share a report. It listens, helps, and remembers — so you
+            don't have to explain everything again next time.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -154,3 +152,4 @@ export function Hero() {
     </section>
   );
 }
+

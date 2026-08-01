@@ -32,9 +32,9 @@ export function AgentShowcase() {
             Five specialists, working as one
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Each agent is purpose-built for a single job and reasons with
-            Gemini 2.5 Flash — together they cover the full arc of a routine
-            health concern.
+            Each agent focuses on just one job, so it can help you better.
+            Together, they cover everything from a quick symptom check to a
+            full health summary.
           </p>
         </div>
 
