@@ -22,6 +22,7 @@ Five AI helpers. One simple app to answer your health questions.
 
 <p>
   <a href="#-preview">Preview</a> •
+  <a href="#-what-can-you-actually-say-to-it">Example Conversations</a> •
   <a href="#-what-can-it-do">What it does</a> •
   <a href="#-how-it-stays-reliable">How it stays reliable</a> •
   <a href="#-getting-started">Getting Started</a> •
@@ -52,6 +53,40 @@ Five AI helpers. One simple app to answer your health questions.
 Think of it as a smart, always-available health assistant. You can talk to it about symptoms, upload a lab report, snap a photo of a medicine, or just have a voice conversation — and it responds like a caring, careful person would.
 
 Behind the scenes it uses **Gemini 2.5 Flash** to think and respond, with a backup plan (**OpenRouter**) in case Gemini is ever busy, plus a real speaking voice (**ElevenLabs**) that falls back to your browser's own voice if needed. You never notice any of this switching — it just works.
+
+<br/>
+
+## 💬 What can you actually say to it?
+
+No special commands needed — just talk to it like you would to a person. Here are some real examples for each agent:
+
+**🗣️ Symptom Checker**
+> "I've had a dull headache and mild fever since this morning."
+> "My stomach's been hurting for two days, worse after eating."
+> "I feel dizzy whenever I stand up too fast."
+
+It'll ask a couple of simple follow-ups (how long, how bad, anything else going on), then tell you what it might be and how urgent it is.
+
+**📄 Lab Report Explainer**
+> Just upload the PDF or photo and ask: "Can you explain this blood test?"
+> "What does a high TSH level mean?"
+> "Is anything here something I should worry about?"
+
+**💊 Medicine Identifier**
+> Snap a photo and ask: "What is this medicine for?"
+> "Can I take this with paracetamol?"
+> "What are the side effects of Azithromycin?"
+
+**🎙️ Voice Chat**
+> Just press the mic and talk naturally: "Hey, I've been coughing a lot the past few days, should I be concerned?"
+> It replies out loud, like a real conversation — you can keep talking back and forth.
+
+**📊 Health Summary**
+> "Summarize my health over the last month."
+> "What have I been asking about the most?"
+> "Am I improving or should I see a doctor?"
+
+If a symptom ever sounds serious or urgent, the app will say so clearly and tell you to seek real medical help right away — it's built to be cautious, not to guess.
 
 <br/>
 
