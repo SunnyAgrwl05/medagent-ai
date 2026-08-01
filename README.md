@@ -6,7 +6,7 @@
 
 ### Your Autonomous Multi-Agent Healthcare Assistant
 
-Five AI helpers. One simple app to answer your health questions.
+Five AI helpers. One simple app for your health questions.
 
 <p>
   <a href="#"><img src="https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /></a>
@@ -22,10 +22,10 @@ Five AI helpers. One simple app to answer your health questions.
 
 <p>
   <a href="#-preview">Preview</a> •
-  <a href="#-what-can-you-actually-say-to-it">Example Conversations</a> •
-  <a href="#-what-can-it-do">What it does</a> •
-  <a href="#-how-it-stays-reliable">How it stays reliable</a> •
-  <a href="#-getting-started">Getting Started</a> •
+  <a href="#-example-conversations">Examples</a> •
+  <a href="#-what-can-it-do">Features</a> •
+  <a href="#-how-it-stays-reliable">Reliability</a> •
+  <a href="#-getting-started">Setup</a> •
   <a href="#-deploying-to-vercel">Deploy</a> •
   <a href="#-license">License</a>
 </p>
@@ -34,59 +34,52 @@ Five AI helpers. One simple app to answer your health questions.
 
 <br/>
 
-> ⚠️ **Please note:** MedAgent AI gives general health information using AI. It is **not** a real doctor and cannot diagnose you. For anything serious, please talk to a real doctor, pharmacist, or emergency service.
+> ⚠️ **Note:** MedAgent AI gives general health info using AI. It's not a real doctor. For anything serious, talk to a real doctor.
 
 <br/>
 
 ## 🖼️ Preview
 
 <div align="center">
-<img src="docs/screenshot-landing.png" alt="MedAgent AI landing page — Symptom Agent live chat demo" width="100%"/>
+<img src="docs/screenshot-landing.png" alt="MedAgent AI landing page" width="100%"/>
 <br/>
-<sub>What the app looks like — chat with the Symptom Agent in real time</sub>
+<sub>Chatting with the Symptom Agent</sub>
 </div>
 
 <br/>
 
-## 🌟 What is MedAgent AI?
+## 🌟 What is this?
 
-Think of it as a smart, always-available health assistant. You can talk to it about symptoms, upload a lab report, snap a photo of a medicine, or just have a voice conversation — and it responds like a caring, careful person would.
+A smart health assistant you can talk to anytime. Describe symptoms, upload a lab report, photograph a medicine, or just talk out loud — it answers like a careful, caring person would.
 
-Behind the scenes it uses **Gemini 2.5 Flash** to think and respond, with a backup plan (**OpenRouter**) in case Gemini is ever busy, plus a real speaking voice (**ElevenLabs**) that falls back to your browser's own voice if needed. You never notice any of this switching — it just works.
+It's powered by Gemini AI, with a backup AI ready if Gemini is busy, and a real speaking voice that falls back to your phone's own voice if needed. You never notice the switching — it just works.
 
 <br/>
 
-## 💬 What can you actually say to it?
+## 💬 Example conversations
 
-No special commands needed — just talk to it like you would to a person. Here are some real examples for each agent:
+Just talk normally — no special commands.
 
 **🗣️ Symptom Checker**
-> "I've had a dull headache and mild fever since this morning."
-> "My stomach's been hurting for two days, worse after eating."
-> "I feel dizzy whenever I stand up too fast."
-
-It'll ask a couple of simple follow-ups (how long, how bad, anything else going on), then tell you what it might be and how urgent it is.
+> "I've had a headache and mild fever since this morning."
+> "My stomach's been hurting for two days."
 
 **📄 Lab Report Explainer**
-> Just upload the PDF or photo and ask: "Can you explain this blood test?"
-> "What does a high TSH level mean?"
-> "Is anything here something I should worry about?"
+> Upload a report and ask: "Can you explain this?"
+> "Is anything here worth worrying about?"
 
 **💊 Medicine Identifier**
-> Snap a photo and ask: "What is this medicine for?"
+> Snap a photo and ask: "What is this for?"
 > "Can I take this with paracetamol?"
-> "What are the side effects of Azithromycin?"
 
 **🎙️ Voice Chat**
-> Just press the mic and talk naturally: "Hey, I've been coughing a lot the past few days, should I be concerned?"
-> It replies out loud, like a real conversation — you can keep talking back and forth.
+> Just press the mic and talk: "I've been coughing a lot lately."
 
 **📊 Health Summary**
-> "Summarize my health over the last month."
-> "What have I been asking about the most?"
-> "Am I improving or should I see a doctor?"
+> "Summarize my health this month."
+> "Am I improving?"
 
-If a symptom ever sounds serious or urgent, the app will say so clearly and tell you to seek real medical help right away — it's built to be cautious, not to guess.
+If something sounds serious, it says so clearly and tells you to get real help right away.
 
 <br/>
 
@@ -97,13 +90,13 @@ If a symptom ever sounds serious or urgent, the app will say so clearly and tell
 <td width="50%" valign="top">
 
 ### 🗣️ Symptom Checker
-Tell it how you're feeling. It asks a few simple follow-up questions, then tells you what it might be, how urgent it is (Low, Moderate, High, or Emergency), and what to do next.
+Describe how you feel. It asks a few questions, then shares what it might be and how urgent it is.
 
 </td>
 <td width="50%" valign="top">
 
-### 📄 Lab Report Explainer
-Upload a photo or PDF of your blood test or lab report. It reads every number and explains, in plain words, what's normal and what's not.
+### 📄 Report Explainer
+Upload a lab report. It reads every value and explains what's normal, in plain words.
 
 </td>
 </tr>
@@ -111,13 +104,13 @@ Upload a photo or PDF of your blood test or lab report. It reads every number an
 <td width="50%" valign="top">
 
 ### 💊 Medicine Identifier
-Snap a photo of a medicine strip, or just type its name. It tells you what it's for, how it's usually taken, and what to watch out for — never telling you to self-medicate.
+Photo or name of a medicine → what it's for, how it's taken, and what to watch for.
 
 </td>
 <td width="50%" valign="top">
 
 ### 🎙️ Voice Chat
-Just talk out loud, hands-free. The assistant listens, thinks, and replies back in a real speaking voice — like a phone call with a calm nurse.
+Hands-free conversation. It listens, thinks, and replies out loud.
 
 </td>
 </tr>
@@ -125,13 +118,13 @@ Just talk out loud, hands-free. The assistant listens, thinks, and replies back 
 <td width="50%" valign="top">
 
 ### 📊 Health Summary
-It looks back at everything you've talked about and gives you one simple summary — what's improving, what needs attention, and what to bring up with your doctor.
+One clear summary of your health history, with tips for next steps.
 
 </td>
 <td width="50%" valign="top">
 
-### 🎨 A Nice Place to Be
-Smooth animations, a clean modern look, dark mode, and it works well on both phone and computer.
+### 🎨 Nice to Use
+Clean design, smooth animations, dark mode, works on phone and computer.
 
 </td>
 </tr>
@@ -141,80 +134,75 @@ Smooth animations, a clean modern look, dark mode, and it works well on both pho
 
 ## 🧠 How it stays reliable
 
-You'll never see this happening, but here's what's going on behind the scenes so the app almost never breaks:
+You'll never see this, but here's what keeps it running smoothly:
 
-- It has **5 different Gemini keys**. If one is busy or hits a limit, it quietly tries the next one.
-- If all 5 Gemini keys are busy at the same time (very rare), it automatically switches to a **backup AI service (OpenRouter)** so you still get an answer.
-- For voice replies, it has **4 different voice keys**. If all of them fail, it simply uses your browser's own built-in voice instead of showing an error.
-- Every time it switches keys or services, it logs what happened — but only for the developer, never something you'd see.
+- 5 different AI keys. If one is busy, it quietly tries the next.
+- If all 5 are busy (rare), it switches to a backup AI automatically.
+- For voice, 4 different keys. If all fail, it just uses your phone's own voice.
+- Every switch is logged for developers — never shown to you.
 
-In simple terms: **it's built to keep working, even when one piece behind the scenes has a bad day.**
+Simply put: **it's built to keep working, even on a bad day.**
 
 <br/>
 
 ## 🧱 Built with
 
-| Part of the app | What it uses |
+| Part | Tool |
 |---|---|
-| Website framework | Next.js 15 + TypeScript |
-| Look & feel | Tailwind CSS + shadcn/ui |
-| Animations | Framer Motion |
-| Icons | Lucide React |
-| Login/accounts | Clerk |
+| Website | Next.js + TypeScript |
+| Design | Tailwind CSS |
+| Login | Clerk |
 | Database | Supabase |
-| Main AI brain | Google Gemini 2.5 Flash (5 keys, auto-switching) |
-| Backup AI brain | OpenRouter (only used if Gemini is fully busy) |
-| Speaking voice | ElevenLabs (4 keys) → falls back to your browser's voice |
-| Listening | Your browser's built-in speech recognition |
-| Charts | Recharts |
-| File uploads | react-dropzone, pdf-parse |
+| Main AI | Gemini 2.5 Flash (5 keys) |
+| Backup AI | OpenRouter |
+| Voice | ElevenLabs → browser voice |
 | Hosting | Vercel |
 
 <br/>
 
-## 📁 How the project is organized
+## 📁 Project layout
 
 <details>
-<summary><b>Click to see the folder structure</b></summary>
+<summary><b>Click to expand</b></summary>
 
 ```
 medagent-ai/
 ├── app/
 │   ├── api/
-│   │   ├── chat/route.ts              # Handles chat messages for all agents
-│   │   ├── tts/route.ts               # Turns text replies into spoken voice
-│   │   ├── report-analyze/route.ts    # Reads and explains lab reports
+│   │   ├── chat/route.ts              # Chat for all agents
+│   │   ├── tts/route.ts               # Text to voice
+│   │   ├── report-analyze/route.ts    # Reads lab reports
 │   │   ├── medicine-scan/route.ts     # Identifies medicines
-│   │   └── summary/route.ts           # Builds the health summary
+│   │   └── summary/route.ts           # Health summary
 │   ├── dashboard/
-│   │   ├── chat/                      # The main chat screen
-│   │   ├── reports/                   # Upload & view lab reports
-│   │   ├── medicine/                  # Medicine scanner screen
-│   │   ├── voice/                     # Voice conversation screen
-│   │   ├── summary/                   # Health summary screen
+│   │   ├── chat/                      # Main chat screen
+│   │   ├── reports/                   # Upload reports
+│   │   ├── medicine/                  # Medicine scanner
+│   │   ├── voice/                     # Voice chat
+│   │   ├── summary/                   # Health summary
 │   │   ├── profile/
 │   │   ├── settings/
 │   │   └── layout.tsx
 │   ├── sign-in/[[...sign-in]]/
 │   ├── sign-up/[[...sign-up]]/
 │   ├── layout.tsx
-│   ├── page.tsx                       # The homepage
+│   ├── page.tsx                       # Homepage
 │   └── globals.css
-├── components/                        # All the reusable UI pieces
-├── hooks/                             # Reusable logic (chat, voice, uploads)
+├── components/                        # UI pieces
+├── hooks/                             # Reusable app logic
 ├── lib/
-│   ├── gemini.ts                      # The AI's instructions + key-switching logic
-│   ├── openrouter.ts                  # Backup AI service
-│   ├── elevenlabs.ts                  # Voice generation + key-switching logic
-│   ├── ai-router.ts                   # Decides: try Gemini first, then backup
+│   ├── gemini.ts                      # AI instructions + key-switching
+│   ├── openrouter.ts                  # Backup AI
+│   ├── elevenlabs.ts                  # Voice + key-switching
+│   ├── ai-router.ts                   # Picks Gemini first, backup if needed
 │   ├── supabase.ts
 │   ├── utils.ts
 │   └── agents.ts
 ├── utils/
-│   ├── retry.ts                       # The "try again with a different key" logic
-│   └── errors.ts                      # Helpers for understanding errors
-├── types/                             # Shared data shapes used across the app
-├── middleware.ts                      # Keeps pages private unless logged in
+│   ├── retry.ts                       # "Try again" logic
+│   └── errors.ts
+├── types/
+├── middleware.ts                      # Keeps pages private
 ├── vercel.json
 └── .env.example
 ```
@@ -225,18 +213,16 @@ medagent-ai/
 
 ## 🚀 Getting started
 
-Want to run this on your own computer? Here's how, step by step.
+### 1 · You'll need
 
-### 1 · What you'll need first
+- Node.js 18.18+
+- A free [Clerk](https://clerk.com/) account
+- A free [Supabase](https://supabase.com/) account
+- A [Gemini API key](https://aistudio.google.com/) (free)
+- *(Optional)* [OpenRouter](https://openrouter.ai/) key, as backup
+- *(Optional)* [ElevenLabs](https://elevenlabs.io/) key, for a nicer voice
 
-- Node.js version 18.18 or newer (20 is best)
-- A free [Clerk](https://clerk.com/) account (for login)
-- A free [Supabase](https://supabase.com/) account (for storing data)
-- At least one [Google AI Studio](https://aistudio.google.com/) Gemini API key (free to get)
-- *(Nice to have)* An [OpenRouter](https://openrouter.ai/) key, as a backup
-- *(Optional)* An [ElevenLabs](https://elevenlabs.io/) key for a nicer voice — without it, your browser's own voice is used instead
-
-### 2 · Download the project
+### 2 · Download it
 
 ```bash
 git clone https://github.com/SunnyAgrwl05/medagent-ai.git
@@ -250,13 +236,13 @@ npm install
 cp .env.example .env.local
 ```
 
-Then open `.env.local` and paste in your own keys.
+Then open `.env.local` and paste in your keys.
 
 <details>
-<summary><b>Click to see what goes in <code>.env.local</code></b></summary>
+<summary><b>Click to see what goes inside</b></summary>
 
 ```env
-# ── Clerk (login) ─────────────────────
+# ── Clerk ──────────────────
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxx
 CLERK_SECRET_KEY=sk_test_xxxxx
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
@@ -264,19 +250,19 @@ NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
 
-# ── Supabase (database) ───────────────
+# ── Supabase ───────────────
 NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=xxxxx
 SUPABASE_SERVICE_ROLE_KEY=xxxxx
 
-# ── Gemini keys (add as many as you have — up to 5) ──
+# ── Gemini (add up to 5 keys) ──
 GEMINI_API_KEY_1=xxxxx
 GEMINI_API_KEY_2=xxxxx
 GEMINI_API_KEY_3=xxxxx
 GEMINI_API_KEY_4=xxxxx
 GEMINI_API_KEY_5=xxxxx
 
-# ── OpenRouter (backup AI, used only if all Gemini keys fail) ──
+# ── OpenRouter (backup, optional) ──
 OPENROUTER_API_KEY=xxxxx
 OPENROUTER_MODEL=openai/gpt-4o-mini
 
@@ -287,27 +273,27 @@ ELEVENLABS_API_KEY_3=xxxxx
 ELEVENLABS_API_KEY_4=xxxxx
 ELEVENLABS_VOICE_ID=xxxxx
 
-# ── App ───────────────────────────────
+# ── App ────────────────────
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
 </details>
 
-> 💡 **You only need one Gemini key to get started.** Adding more just means the app can handle more people at once without slowing down.
+> 💡 One Gemini key is enough to start. More keys just mean more people can use it at once.
 
 ### 4 · Set up the database
 
-Open your Supabase project's SQL editor and run the setup script found at the bottom of `lib/supabase.ts`. This creates the tables the app needs to remember your conversations and history.
+Open Supabase's SQL editor and run the setup script at the bottom of `lib/supabase.ts`.
 
-### 5 · Start the app
+### 5 · Start it
 
 ```bash
 npm run dev
 ```
 
-Then open **http://localhost:3000** in your browser 🎉
+Open **http://localhost:3000** 🎉
 
-### 6 · Build it for real use
+### 6 · Build for real use
 
 ```bash
 npm run build
@@ -316,15 +302,13 @@ npm run start
 
 <br/>
 
-## ☁️ Putting it online with Vercel
+## ☁️ Deploying to Vercel
 
-1. Push this project to GitHub (or GitLab/Bitbucket).
+1. Push this project to GitHub.
 2. Go to [vercel.com/new](https://vercel.com/new) and import it.
-3. Vercel figures out it's a Next.js app automatically — nothing extra to configure.
-4. Copy every line from `.env.example` into Vercel's **Project Settings → Environment Variables**.
-5. Click deploy. From now on, every time you push to `main`, it updates automatically.
-
-Prefer the command line? You can also do:
+3. Vercel detects Next.js automatically.
+4. Copy all keys from `.env.example` into Vercel's environment variables.
+5. Deploy. Every push to `main` updates it automatically.
 
 ```bash
 npm install -g vercel
@@ -334,39 +318,38 @@ vercel --prod
 
 <br/>
 
-## 🔐 A note on keeping things safe
+## 🔐 Keeping things safe
 
-- You have to be logged in to use the dashboard or the API — nobody else can access your data.
-- The app's database keys are only ever used on the server, never sent to your browser.
-- Same goes for all the AI keys (Gemini, OpenRouter, ElevenLabs) — they stay on the server, safely out of sight.
-- Never share or upload your `.env.local` file — it's already set up to be ignored by Git.
-- If any key ever gets accidentally shown somewhere (like in a screenshot), just go generate a new one — it takes a minute and keeps you safe.
+- You must be logged in to use the app — your data stays yours.
+- All keys stay on the server, never sent to your browser.
+- Never share your `.env.local` file — it's already ignored by Git.
+- If a key ever leaks, just generate a new one — takes a minute.
 
 <br/>
 
 ## 🩺 How the AI is guided
 
-Each of the five agents follows its own careful set of instructions — asking the right questions, using cautious language, never claiming certainty, and always suggesting a real doctor for anything serious. Even the backup AI (OpenRouter) follows the exact same instructions, so the tone and safety never change no matter which one answers.
+Each agent follows careful instructions — cautious language, no false certainty, always suggesting a real doctor for anything serious. The backup AI follows the same rules, so nothing changes no matter which one answers.
 
 <br/>
 
-## 📦 Quick command list
+## 📦 Quick commands
 
 ```bash
-npm install       # set everything up
-npm run dev       # run it while you're developing
-npm run build     # prepare it for real use
+npm install       # set up
+npm run dev       # run while developing
+npm run build     # prepare for real use
 npm run start     # run the finished version
-npm run lint      # check the code for issues
-vercel            # put up a test version online
-vercel --prod     # put up the real, live version
+npm run lint      # check the code
+vercel            # put up a test version
+vercel --prod     # go live
 ```
 
 <br/>
 
 ## 📝 License
 
-This project is open source under the MIT license — see [LICENSE](./LICENSE) for details.
+MIT — see [LICENSE](./LICENSE).
 
 <br/>
 
