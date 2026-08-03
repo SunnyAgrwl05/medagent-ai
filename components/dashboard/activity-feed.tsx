@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Stethoscope,
   FileScan,
@@ -10,6 +8,7 @@ import {
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { createServerSupabase } from "@/lib/supabase";
 import { ActivityItem } from "@/types";
 import { formatRelativeTime, urgencyColor, urgencyLabel } from "@/lib/utils";
 
@@ -21,40 +20,29 @@ const iconMap: Record<string, LucideIcon> = {
   summary: ClipboardList,
 };
 
-const activity: ActivityItem[] = [
-  {
-    id: "1",
-    agent: "symptom",
-    title: "Headache & mild fever check-in",
-    description: "Assessed as low urgency — advised rest and monitoring.",
-    timestamp: new Date(Date.now() - 1000 * 60 * 40).toISOString(),
-    urgency: "low",
-  },
-  {
-    id: "2",
-    agent: "report",
-    title: "CBC blood panel analyzed",
-    description: "2 values flagged slightly outside reference range.",
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(),
-  },
-  {
-    id: "3",
-    agent: "medicine",
-    title: "Identified Azithromycin 500mg",
-    description: "Explained dosage schedule and food interaction notes.",
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 26).toISOString(),
-  },
-  {
-    id: "4",
-    agent: "voice",
-    title: "Voice consult — sore throat",
-    description: "3 minute conversation, recommended warm saline gargle.",
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 48).toISOString(),
-    urgency: "low",
-  },
-];
+export async function ActivityFeed({ userId }: { userId: string }) {
+  const supabase = await createServerSupabase();
 
-export function ActivityFeed() {
+  const { data, error } = await supabase
+    .from("activity_log")
+    .select("id, agent, title, description, urgency, created_at")
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false })
+    .limit(10);
+
+  if (error) {
+    console.error("[activity-feed] error:", error);
+  }
+
+  const activity: ActivityItem[] = (data ?? []).map((row) => ({
+    id: row.id,
+    agent: row.agent,
+    title: row.title,
+    description: row.description,
+    timestamp: row.created_at,
+    urgency: row.urgency ?? undefined,
+  }));
+
   return (
     <Card className="border-border/60 bg-card/60 backdrop-blur">
       <CardHeader>

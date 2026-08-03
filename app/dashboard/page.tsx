@@ -29,7 +29,7 @@ export default async function DashboardPage() {
           <div className="lg:col-span-2">
             <HealthChart />
           </div>
-          <ActivityFeed />
+          <ActivityFeed userId={user?.id ?? ""} />
         </div>
 
         <div>
