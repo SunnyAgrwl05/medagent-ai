@@ -83,8 +83,13 @@ export function ChatInput({
                 <FileText className="h-4 w-4 text-teal-400" />
               )}
               <span className="max-w-[120px] truncate">{att.name}</span>
-              <button onClick={() => removeAttachment(att.id)} className="text-muted-foreground hover:text-foreground">
-                <X className="h-3 w-3" />
+              <button
+                type="button"
+                onClick={() => removeAttachment(att.id)}
+                className="text-muted-foreground hover:text-foreground"
+                aria-label={`Remove ${att.name}`}
+              >
+                <X className="h-3 w-3" aria-hidden="true" />
               </button>
             </div>
           ))}
@@ -94,12 +99,14 @@ export function ChatInput({
       <div className="flex items-end gap-2">
         {allowAttachments && (
           <label className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground">
-            <Paperclip className="h-4 w-4" />
+            <Paperclip className="h-4 w-4" aria-hidden="true" />
+            <span className="sr-only">Attach image or PDF</span>
             <input
               type="file"
               className="hidden"
               multiple
               accept="image/*,application/pdf"
+              aria-label="Attach image or PDF"
               onChange={(e) => e.target.files && addFiles(Array.from(e.target.files))}
             />
           </label>
@@ -111,8 +118,10 @@ export function ChatInput({
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
+          aria-label="Message"
           rows={1}
           className="max-h-32 min-h-[40px] flex-1 resize-none border-none bg-transparent px-2 py-2 shadow-none focus-visible:ring-0"
+          disabled={isLoading}
         />
 
         {isSupported && (
@@ -122,22 +131,29 @@ export function ChatInput({
             size="icon"
             onClick={isListening ? stopListening : startListening}
             className={cn(isListening && "relative")}
-            aria-label="Voice input"
+            aria-label={isListening ? "Stop listening" : "Start listening"}
+            aria-pressed={isListening}
           >
             {isListening && (
-              <span className="absolute inset-0 animate-pulse-ring rounded-full bg-teal-400" />
+              <span className="absolute inset-0 animate-pulse-ring rounded-full bg-teal-400" aria-hidden="true" />
             )}
-            <Mic className="relative h-4 w-4" />
+            <Mic className="relative h-4 w-4" aria-hidden="true" />
           </Button>
         )}
 
         {isLoading ? (
-          <Button type="button" variant="destructive" size="icon" onClick={onStop}>
-            <Square className="h-3.5 w-3.5" />
+          <Button type="button" variant="destructive" size="icon" onClick={onStop} aria-label="Stop">
+            <Square className="h-3.5 w-3.5" aria-hidden="true" />
           </Button>
         ) : (
-          <Button type="button" size="icon" onClick={handleSend}>
-            <Send className="h-4 w-4" />
+          <Button
+            type="button"
+            size="icon"
+            onClick={handleSend}
+            aria-label="Send"
+            disabled={!value.trim() && attachments.length === 0}
+          >
+            <Send className="h-4 w-4" aria-hidden="true" />
           </Button>
         )}
       </div>
