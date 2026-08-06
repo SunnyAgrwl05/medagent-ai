@@ -68,38 +68,61 @@ export function useChat({ agent, initialMessages = [] }: UseChatOptions) {
         const decoder = new TextDecoder();
         let accumulated = "";
         let urgency: ChatMessage["urgency"];
+        let buffer = ""; // persists across reads — holds any incomplete line
+
+        const applyLine = (line: string) => {
+          const trimmed = line.trim();
+          if (!trimmed) return;
+          try {
+            const parsed = JSON.parse(trimmed);
+            if (parsed.type === "text") {
+              accumulated += parsed.value;
+            } else if (parsed.type === "urgency") {
+              urgency = parsed.value;
+            }
+          } catch (err) {
+            // A line that's still malformed after buffering is a real
+            // protocol error, not a chunk-boundary artifact — log it,
+            // don't inject it into the visible message.
+            console.error("Failed to parse chat event:", trimmed, err);
+          }
+        };
 
         while (true) {
           const { done, value } = await reader.read();
-          if (done) break;
-          const chunk = decoder.decode(value, { stream: true });
 
-          for (const line of chunk.split("\n")) {
-            if (!line.trim()) continue;
-            try {
-              const parsed = JSON.parse(line);
-              if (parsed.type === "text") {
-                accumulated += parsed.value;
-              } else if (parsed.type === "urgency") {
-                urgency = parsed.value;
-              }
-            } catch {
-              accumulated += line;
-            }
+          if (value) {
+            buffer += decoder.decode(value, { stream: true });
+
+            const lines = buffer.split("\n");
+            // Last element may be a partial line — hold it for the next read
+            buffer = lines.pop() ?? "";
+
+            for (const line of lines) applyLine(line);
+
+            setMessages((prev) =>
+              prev.map((m) =>
+                m.id === assistantId
+                  ? { ...m, content: accumulated, urgency, isStreaming: true }
+                  : m
+              )
+            );
           }
 
-          setMessages((prev) =>
-            prev.map((m) =>
-              m.id === assistantId
-                ? { ...m, content: accumulated, urgency, isStreaming: true }
-                : m
-            )
-          );
+          if (done) {
+            // Flush any buffered multi-byte chars + final unterminated line
+            buffer += decoder.decode();
+            applyLine(buffer);
+            buffer = "";
+            break;
+          }
         }
 
         setMessages((prev) =>
           prev.map((m) =>
-            m.id === assistantId ? { ...m, isStreaming: false } : m
+            m.id === assistantId
+              ? { ...m, content: accumulated, urgency, isStreaming: false }
+              : m
           )
         );
       } catch (err) {
@@ -111,11 +134,11 @@ export function useChat({ agent, initialMessages = [] }: UseChatOptions) {
             prev.map((m) =>
               m.id === assistantId
                 ? {
-                    ...m,
-                    content:
-                      "Sorry, I couldn't process that just now. Please try again in a moment.",
-                    isStreaming: false,
-                  }
+                  ...m,
+                  content:
+                    "Sorry, I couldn't process that just now. Please try again in a moment.",
+                  isStreaming: false,
+                }
                 : m
             )
           );
@@ -136,5 +159,3 @@ export function useChat({ agent, initialMessages = [] }: UseChatOptions) {
 
   return { messages, sendMessage, isLoading, stop, clear, setMessages };
 }
-
-
