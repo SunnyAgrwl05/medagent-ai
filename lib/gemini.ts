@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI, Part } from "@google/generative-ai";
 import { withKeyRotation } from "@/lib/retry";
 
-export const GEMINI_MODEL = "gemini-2.5-flash";
+export const GEMINI_MODEL = "gemini-3.6-flash";
 
 function getGeminiKeys(): string[] {
    return [1, 2, 3, 4, 5]

@@ -18,13 +18,15 @@ interface ChatRequestBody {
 
 const VALID_AGENTS: AgentId[] = ["symptom", "report", "medicine", "voice", "summary"];
 
+
 function detectUrgency(text: string): string | undefined {
   const lower = text.toLowerCase();
-  if (lower.includes("emergency")) return "emergency";
-  if (lower.includes("urgency level: high") || lower.includes("urgency: high")) return "high";
-  if (lower.includes("urgency level: moderate") || lower.includes("urgency: moderate"))
-    return "moderate";
-  if (lower.includes("urgency level: low") || lower.includes("urgency: low")) return "low";
+
+  const match = lower.match(/urgency\s*(?:level)?\s*:?\s*\*{0,2}\s*(low|moderate|high|emergency)/i);
+  if (match) {
+    return match[1];
+  }
+
   return undefined;
 }
 
