@@ -132,7 +132,7 @@ export function Footer() {
         </motion.div>
 
         {/* Link grid */}
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-b border-border/60 pb-10 sm:grid-cols-4 lg:gap-x-12">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-b border-border/60 pb-10 sm:grid-cols-5 lg:gap-x-12">
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-teal-400 to-indigo-500 shadow-[0_0_0_1px_rgba(45,212,191,0.3),0_6px_20px_-6px_rgba(45,212,191,0.5)]">
@@ -212,7 +212,10 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <h4 className="mt-5 text-xs font-semibold uppercase tracking-wide text-foreground/70">Legal</h4>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-foreground/70">Legal</h4>
             <ul className="mt-3.5 space-y-2">
               {legalLinks.map((l) => (
                 <li key={l.href}>
